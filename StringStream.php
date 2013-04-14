@@ -61,6 +61,9 @@
       $this->string = substr($aPath, 9);
       $this->options = $aOptions;
 
+      // strip binary/text flags from mode
+      $aMode = strtr($aMode, array('b' => '', 't' => ''));
+
       switch ($aMode) {
 
         case 'r':

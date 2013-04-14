@@ -202,5 +202,15 @@
       }
 
     }
-  
+
+    public function testBinaryFlagStrip() {
+      // always opens in 'rb' mode
+      self::assertEquals('foobar', file_get_contents('string://foobar'));
+
+      $handle = fopen('string://foobar', 'rt');
+      self::assertEquals('foobar', stream_get_contents($handle));
+
+      $handle = fopen('string://foobar', 'br');
+      self::assertEquals('foobar', stream_get_contents($handle));
+    }
   }
